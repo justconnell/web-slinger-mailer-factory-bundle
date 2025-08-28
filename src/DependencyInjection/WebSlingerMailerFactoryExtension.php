@@ -34,11 +34,11 @@ class WebSlingerMailerFactoryExtension extends Extension implements PrependExten
 
     public function prepend(ContainerBuilder $container): void
     {
-        // Add mailer_factory config to the webslinger tree
+        // Add mailer_factory config to the webslinger tree with optional environment variables
         $container->prependExtensionConfig('webslinger', [
             'mailer_factory' => [
-                'test_email' => '%env(WEB_SLINGER_MAILER_TEST_EMAIL)%',
-                'api_env' => '%env(APP_ENV)%',
+                'test_email' => '%env(default:webslinger.mailer_factory.test_email:WEB_SLINGER_MAILER_TEST_EMAIL)%',
+                'api_env' => '%env(default:webslinger.mailer_factory.api_env:APP_ENV)%',
                 'upload_directory' => '%kernel.project_dir%/var/uploads/',
                 'subject_prefix' => null,
                 'enable_error_logging' => false
