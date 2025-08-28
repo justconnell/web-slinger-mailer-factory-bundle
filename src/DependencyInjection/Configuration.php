@@ -14,6 +14,7 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->getRootNode();
         
         $rootNode
+            ->ignoreExtraKeys()
             ->children()
                 ->arrayNode('mailer_factory')
                     ->children()
