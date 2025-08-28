@@ -14,7 +14,6 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->getRootNode();
         
         $rootNode
-            ->ignoreExtraKeys()
             ->children()
                 ->arrayNode('mailer_factory')
                     ->children()
@@ -39,6 +38,9 @@ class Configuration implements ConfigurationInterface
                             ->info('Enable error logging for mailer failures')
                         ->end()
                     ->end()
+                ->end()
+                ->variableNode('stored_procedure')
+                    ->info('Configuration for web-slinger stored procedure bundle')
                 ->end()
             ->end();
 
