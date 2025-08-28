@@ -5,10 +5,9 @@ namespace WebSlinger\MailerFactory\DependencyInjection;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
-use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-class WebSlingerMailerFactoryExtension extends Extension implements PrependExtensionInterface
+class WebSlingerMailerFactoryExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
@@ -29,20 +28,6 @@ class WebSlingerMailerFactoryExtension extends Extension implements PrependExten
 
     public function getAlias(): string
     {
-        return 'webslinger';
-    }
-
-    public function prepend(ContainerBuilder $container): void
-    {
-        // Add mailer_factory config to the webslinger tree with optional environment variables
-        $container->prependExtensionConfig('webslinger', [
-            'mailer_factory' => [
-                'test_email' => '%env(default:webslinger.mailer_factory.test_email:WEB_SLINGER_MAILER_TEST_EMAIL)%',
-                'api_env' => '%env(default:webslinger.mailer_factory.api_env:APP_ENV)%',
-                'upload_directory' => '%kernel.project_dir%/var/uploads/',
-                'subject_prefix' => null,
-                'enable_error_logging' => false
-            ]
-        ]);
+        return 'web_slinger_mailer_factory';
     }
 }

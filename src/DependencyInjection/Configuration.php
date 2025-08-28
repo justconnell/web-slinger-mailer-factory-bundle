@@ -9,7 +9,7 @@ class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('webslinger');
+        $treeBuilder = new TreeBuilder('web_slinger_mailer_factory');
 
         $rootNode = $treeBuilder->getRootNode();
         

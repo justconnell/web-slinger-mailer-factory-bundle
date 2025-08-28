@@ -125,7 +125,7 @@ class InstallCommand extends Command
     {
         return <<<YAML
 # WebSlinger Mailer Factory Bundle Configuration
-webslinger:
+web_slinger_mailer_factory:
     mailer_factory:
         test_email: '%env(WEB_SLINGER_MAILER_TEST_EMAIL)%'
         api_env: '%env(APP_ENV)%'

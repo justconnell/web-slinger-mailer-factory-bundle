@@ -6,6 +6,8 @@ services:
 
     WebSlinger\MailerFactory\MailerFactory:
         arguments:
+            $mailer: '@mailer'
+            $logger: '@logger'
             $testEmail: '%webslinger.mailer_factory.test_email%'
             $apiEnv: '%webslinger.mailer_factory.api_env%'
             $uploadDirectory: '%webslinger.mailer_factory.upload_directory%'

@@ -5,6 +5,7 @@ namespace WebSlinger\MailerFactory;
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
 use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\Transport\TransportInterface;
@@ -18,13 +19,17 @@ class MailerFactory
 
     public function __construct(
         private readonly TransportInterface $mailer,
-        private readonly LoggerInterface $logger,
-        private readonly string $testEmail,
-        private readonly string $apiEnv,
-        private readonly string $uploadDirectory,
+        private readonly ?LoggerInterface $logger = null,
+        private readonly string $testEmail = 'test@example.com',
+        private readonly string $apiEnv = 'dev',
+        private readonly string $uploadDirectory = '/tmp/',
         private readonly string $subjectPrefix = 'TEST EMAIL: ',
         private readonly bool $enableErrorLogging = true,
     ) {
+        // Use NullLogger as fallback if no logger provided
+        if ($this->logger === null) {
+            $this->logger = new NullLogger();
+        }
         // Determine if we're in test mode
         if (strtoupper($this->apiEnv) !== 'PROD') {
             $this->isTest = true;
