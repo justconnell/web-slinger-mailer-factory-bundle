@@ -11,7 +11,9 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('webslinger');
 
-        $treeBuilder->getRootNode()
+        $rootNode = $treeBuilder->getRootNode();
+        
+        $rootNode
             ->children()
                 ->arrayNode('mailer_factory')
                     ->children()
@@ -36,6 +38,10 @@ class Configuration implements ConfigurationInterface
                             ->info('Enable error logging for mailer failures')
                         ->end()
                     ->end()
+                ->end()
+                // Allow other webslinger packages to add their configuration
+                ->prototype('variable')
+                    ->info('Configuration for other webslinger packages')
                 ->end()
             ->end();
 
