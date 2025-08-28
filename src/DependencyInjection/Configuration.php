@@ -39,10 +39,6 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-                // Allow other webslinger packages to add their configuration
-                ->prototype('variable')
-                    ->info('Configuration for other webslinger packages')
-                ->end()
             ->end();
 
         return $treeBuilder;
