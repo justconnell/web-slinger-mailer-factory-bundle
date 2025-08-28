@@ -1,0 +1,45 @@
+{
+    "name": "web-slinger/mailer-factory-bundle",
+    "description": "A reusable factory for sending templated emails with Symfony Mailer, featuring test mode and attachment support",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Justin Connell",
+            "email": "me@justinconnell.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "symfony/dependency-injection": "^5.4|^6.0|^7.0",
+        "symfony/config": "^5.4|^6.0|^7.0",
+        "symfony/http-kernel": "^5.4|^6.0|^7.0",
+        "symfony/yaml": "^5.4|^6.0|^7.0",
+        "symfony/mailer": "^5.4|^6.0|^7.0",
+        "symfony/mime": "^5.4|^6.0|^7.0",
+        "symfony/twig-bridge": "^5.4|^6.0|^7.0",
+        "egulias/email-validator": "^3.0|^4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0|^10.0",
+        "symfony/framework-bundle": "^5.4|^6.0|^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "WebSlinger\\MailerFactory\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "WebSlinger\\MailerFactory\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": false,
+            "require": "5.4.*"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

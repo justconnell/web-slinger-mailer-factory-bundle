@@ -1,0 +1,45 @@
+# Dependencies
+/vendor/
+composer.lock
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# PHPUnit
+.phpunit.result.cache
+/phpunit.xml
+
+# Build files
+/build/
+
+# Local environment files
+.env.local
+.env.*.local
+
+# Temporary files
+/var/
+/tmp/
